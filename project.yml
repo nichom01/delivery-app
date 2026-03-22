@@ -1,0 +1,39 @@
+name: DeliveryDriver
+options:
+  bundleIdPrefix: com.deliverydriver
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+  generateEmptyDirectories: true
+
+targets:
+  DeliveryDriver:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - DeliveryDriver
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
+        PRODUCT_BUNDLE_IDENTIFIER: com.deliverydriver.app
+        CODE_SIGN_ENTITLEMENTS: DeliveryDriver/DeliveryDriver.entitlements
+        DEVELOPMENT_TEAM: ""
+    info:
+      path: DeliveryDriver/Info.plist
+      properties:
+        CFBundleDisplayName: Delivery Driver
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1"
+        NSCameraUsageDescription: Camera is used to scan parcel barcodes during loading.
+        NSLocationAlwaysAndWhenInUseUsageDescription: Your location is tracked during active deliveries to keep operations informed.
+        NSLocationWhenInUseUsageDescription: Your location is used to record delivery positions.
+        NSLocationAlwaysUsageDescription: Your location is tracked in the background during active deliveries.
+        UIBackgroundModes:
+          - location
+        UILaunchScreen:
+          UIColorName: ""
+    entitlements:
+      path: DeliveryDriver/DeliveryDriver.entitlements
+      properties:
+        com.apple.developer.location-continued-use: true
