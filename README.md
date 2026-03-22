@@ -246,6 +246,11 @@ Location permission must be granted as **Always** (not just While Using) for bac
 - Android support
 - Multi-driver / team management
 - In-app navigation or mapping
-- Photo capture at POD (signature only)
 - Biometric login
 - Push notifications
+
+## Completed post-v1 features
+
+| Feature | Branch | PR |
+|---|---|---|
+| Photo capture at POD | `feature/pod-photo-capture` | [#1](https://github.com/nichom01/delivery-app/pull/1) |
