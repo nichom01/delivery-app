@@ -25,7 +25,8 @@ targets:
         CFBundleDisplayName: Delivery Driver
         CFBundleShortVersionString: "1.0"
         CFBundleVersion: "1"
-        NSCameraUsageDescription: Camera is used to scan parcel barcodes during loading.
+        NSCameraUsageDescription: Camera is used to scan parcel barcodes during loading and to photograph deliveries as proof of delivery.
+        NSPhotoLibraryUsageDescription: Photo library access is used to attach a delivery photo as proof of delivery.
         NSLocationAlwaysAndWhenInUseUsageDescription: Your location is tracked during active deliveries to keep operations informed.
         NSLocationWhenInUseUsageDescription: Your location is used to record delivery positions.
         NSLocationAlwaysUsageDescription: Your location is tracked in the background during active deliveries.

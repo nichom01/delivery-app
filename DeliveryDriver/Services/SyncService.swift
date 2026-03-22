@@ -93,13 +93,19 @@ final class SyncService: ObservableObject {
         let iso = ISO8601DateFormatter()
         do {
             for pod in records {
-                let body: [String: Any] = await context.perform {[
-                    "type": "pod",
-                    "delivery_id": pod.deliveryId ?? "",
-                    "recipient_name": pod.recipientName ?? "",
-                    "signature": pod.signatureImage?.base64EncodedString() ?? "",
-                    "captured_at": iso.string(from: pod.capturedAt ?? Date())
-                ]}
+                let body: [String: Any] = await context.perform {
+                    var payload: [String: Any] = [
+                        "type": "pod",
+                        "delivery_id": pod.deliveryId ?? "",
+                        "recipient_name": pod.recipientName ?? "",
+                        "signature": pod.signatureImage?.base64EncodedString() ?? "",
+                        "captured_at": iso.string(from: pod.capturedAt ?? Date())
+                    ]
+                    if let photo = pod.photoImage {
+                        payload["photo"] = photo.base64EncodedString()
+                    }
+                    return payload
+                }
                 try await api.post(url: url, body: body)
                 await context.perform {
                     pod.submittedAt = Date()

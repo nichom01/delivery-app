@@ -29,6 +29,7 @@
     <entity name="PODEntity" representedClassName="PODEntity" syncable="YES" codeGenerationType="class">
         <attribute name="capturedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="deliveryId" optional="YES" attributeType="String"/>
+        <attribute name="photoImage" optional="YES" attributeType="Binary"/>
         <attribute name="podId" optional="YES" attributeType="String"/>
         <attribute name="recipientName" optional="YES" attributeType="String"/>
         <attribute name="signatureImage" optional="YES" attributeType="Binary"/>

@@ -21,13 +21,15 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Camera is used to scan parcel barcodes during loading.</string>
+	<string>Camera is used to scan parcel barcodes during loading and to photograph deliveries as proof of delivery.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Your location is tracked during active deliveries to keep operations informed.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Your location is tracked in the background during active deliveries.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Your location is used to record delivery positions.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo library access is used to attach a delivery photo as proof of delivery.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
