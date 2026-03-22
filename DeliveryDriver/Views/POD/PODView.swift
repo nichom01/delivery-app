@@ -6,6 +6,8 @@ struct PODView: View {
     @StateObject private var vm: PODViewModel
     @StateObject private var canvas = SignatureCanvasController()
     @State private var showSuccess = false
+    @State private var showPhotoPicker = false
+    @State private var photoSource: CameraPickerView.Source = .camera
 
     init(delivery: DeliveryEntity) {
         self.delivery = delivery
@@ -20,6 +22,7 @@ struct PODView: View {
                 VStack(alignment: .leading, spacing: DS.Spacing.lg) {
                     recipientField
                     signatureSection
+                    photoSection
                     if let error = vm.errorMessage { inlineError(error) }
                     actionButtons
                 }
@@ -79,6 +82,91 @@ struct PODView: View {
                         .allowsHitTesting(false)
                 }
             }
+        }
+    }
+
+    private var photoSection: some View {
+        VStack(alignment: .leading, spacing: DS.Spacing.sm) {
+            HStack {
+                sectionLabel("Delivery Photo", icon: "camera.fill")
+                Text("Optional")
+                    .font(DS.Typography.micro())
+                    .foregroundColor(DS.Colors.textSecondary)
+                    .padding(.horizontal, DS.Spacing.xs)
+                    .padding(.vertical, 2)
+                    .background(DS.Colors.surface)
+                    .clipShape(Capsule())
+                Spacer()
+                if vm.capturedPhoto != nil {
+                    Button("Retake") {
+                        photoSource = .camera
+                        showPhotoPicker = true
+                    }
+                    .font(DS.Typography.caption())
+                    .foregroundColor(DS.Colors.accent)
+                }
+            }
+
+            if let photo = vm.capturedPhoto {
+                // Thumbnail of the captured photo
+                Image(uiImage: photo)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 200)
+                    .clipShape(RoundedRectangle(cornerRadius: DS.Radius.card))
+                    .overlay(alignment: .topTrailing) {
+                        Button {
+                            vm.capturedPhoto = nil
+                        } label: {
+                            Image(systemName: "xmark.circle.fill")
+                                .font(.system(size: 24))
+                                .foregroundColor(.white)
+                                .shadow(radius: 2)
+                        }
+                        .padding(DS.Spacing.sm)
+                    }
+            } else {
+                // Capture prompt
+                Button {
+                    photoSource = UIImagePickerController.isSourceTypeAvailable(.camera)
+                        ? .camera : .library
+                    showPhotoPicker = true
+                } label: {
+                    HStack(spacing: DS.Spacing.md) {
+                        Image(systemName: "camera.fill")
+                            .font(.system(size: 24))
+                            .foregroundColor(DS.Colors.accent)
+
+                        VStack(alignment: .leading, spacing: DS.Spacing.xs) {
+                            Text("Add a photo")
+                                .font(DS.Typography.bodyBold())
+                                .foregroundColor(DS.Colors.textPrimary)
+                            Text(UIImagePickerController.isSourceTypeAvailable(.camera)
+                                 ? "Take a photo of the delivered parcel"
+                                 : "Choose from your photo library")
+                                .font(DS.Typography.caption())
+                                .foregroundColor(DS.Colors.textSecondary)
+                        }
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundColor(DS.Colors.textSecondary)
+                    }
+                    .padding(DS.Spacing.md)
+                    .cardStyle()
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .sheet(isPresented: $showPhotoPicker) {
+            CameraPickerView(source: photoSource) { image in
+                vm.capturedPhoto = image
+                showPhotoPicker = false
+            } onCancel: {
+                showPhotoPicker = false
+            }
+            .ignoresSafeArea()
         }
     }
 

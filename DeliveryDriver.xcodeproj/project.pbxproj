@@ -11,6 +11,7 @@
 		03C0357E7D012CB28F8CC380 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D81DD256FBD8D340EDE75F1 /* APIClient.swift */; };
 		063A8E287AE20A99B150157C /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8606E8C2AEE73303C5A923 /* SplashView.swift */; };
 		0EE272EAB701C27C184EDE3F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DBE268BDC9405E006110A8 /* KeychainService.swift */; };
+		11FD489F90EAFD18EC3F8B2F /* CameraPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE117D1EFB171F8B4E8E6B6 /* CameraPickerView.swift */; };
 		18DC063C6070D6866C126AA2 /* ManifestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F5E1ADE719AB49D506C994 /* ManifestViewModel.swift */; };
 		1D67DEEA66B5C72C06BCC0ED /* DeliveryDriverApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511EFB37DC2E1F6255BBB77B /* DeliveryDriverApp.swift */; };
 		1FFD164DB2F48EB1B57FBCD1 /* ManifestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0076223B5B5F38E60F7C113B /* ManifestView.swift */; };
@@ -68,6 +69,7 @@
 		903E1A0B01F7AFA3FFE891DC /* DeliveryDriver.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeliveryDriver.entitlements; sourceTree = "<group>"; };
 		9D81DD256FBD8D340EDE75F1 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A217D2BD5D391EF9E5B49261 /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
+		ABE117D1EFB171F8B4E8E6B6 /* CameraPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPickerView.swift; sourceTree = "<group>"; };
 		BDEE024E8AFB7F76F8D64FA2 /* AuditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditViewModel.swift; sourceTree = "<group>"; };
 		C2E739AD65E808B9843903BF /* PODViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PODViewModel.swift; sourceTree = "<group>"; };
 		C37403779CD665FBE9664240 /* ManifestModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestModels.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		7E56E356E47C3A3317EFC0EE /* POD */ = {
 			isa = PBXGroup;
 			children = (
+				ABE117D1EFB171F8B4E8E6B6 /* CameraPickerView.swift */,
 				F709C85BC754296642477FEC /* PODView.swift */,
 				45F3F1B96EE5D83CC55C0DDD /* SignatureCanvasView.swift */,
 			);
@@ -307,6 +310,7 @@
 				374CB8AC2E982391074CAD4B /* AuditView.swift in Sources */,
 				039A143957DA09C8A48B2B00 /* AuditViewModel.swift in Sources */,
 				D8129B12AD74078EBE0982E7 /* BarcodeScannerView.swift in Sources */,
+				11FD489F90EAFD18EC3F8B2F /* CameraPickerView.swift in Sources */,
 				BA6F26EAE74473F1E09C5EC2 /* DDTextField.swift in Sources */,
 				97E44067F6E8511B4E9076AA /* DeliveryDetailView.swift in Sources */,
 				DC2054838D5722A586C4DA93 /* DeliveryDriver.xcdatamodeld in Sources */,

@@ -5,6 +5,7 @@ import UIKit
 @MainActor
 final class PODViewModel: ObservableObject {
     @Published var recipientName: String
+    @Published var capturedPhoto: UIImage?
     @Published var isSubmitting = false
     @Published var errorMessage: String?
     @Published var submitted = false
@@ -21,11 +22,14 @@ final class PODViewModel: ObservableObject {
         isSubmitting = true
         errorMessage = nil
 
-        guard let pngData = signature.pngData() else {
+        guard let signatureData = signature.pngData() else {
             errorMessage = "Failed to render signature. Please try again."
             isSubmitting = false
             return
         }
+
+        // Compress photo to JPEG at 0.8 quality to keep binary size reasonable.
+        let photoData = capturedPhoto?.jpegData(compressionQuality: 0.8)
 
         let context = persistence.container.newBackgroundContext()
         let deliveryId = delivery.deliveryId ?? ""
@@ -38,10 +42,10 @@ final class PODViewModel: ObservableObject {
                 pod.podId = UUID().uuidString
                 pod.deliveryId = deliveryId
                 pod.recipientName = name
-                pod.signatureImage = pngData
+                pod.signatureImage = signatureData
+                pod.photoImage = photoData
                 pod.capturedAt = now
 
-                // Mark delivery as completed.
                 let fetch = NSFetchRequest<DeliveryEntity>(entityName: "DeliveryEntity")
                 fetch.predicate = NSPredicate(format: "deliveryId == %@", deliveryId)
                 fetch.fetchLimit = 1
@@ -52,7 +56,6 @@ final class PODViewModel: ObservableObject {
                 try context.save()
             }
 
-            // Merge and immediately attempt sync.
             await persistence.container.viewContext.perform {
                 self.persistence.container.viewContext.refreshAllObjects()
             }
