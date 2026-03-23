@@ -3,6 +3,20 @@ import SwiftUI
 struct DeliveryDetailView: View {
     @ObservedObject var delivery: DeliveryEntity
 
+    // Fetch the POD for this delivery — auto-updates if one is submitted while the view is open.
+    @FetchRequest private var pods: FetchedResults<PODEntity>
+
+    init(delivery: DeliveryEntity) {
+        self.delivery = delivery
+        _pods = FetchRequest(
+            entity: PODEntity.entity(),
+            sortDescriptors: [NSSortDescriptor(keyPath: \PODEntity.capturedAt, ascending: false)],
+            predicate: NSPredicate(format: "deliveryId == %@", delivery.deliveryId ?? "")
+        )
+    }
+
+    private var capturedPOD: PODEntity? { pods.first }
+
     var body: some View {
         ZStack {
             DS.Colors.background.ignoresSafeArea()
@@ -12,6 +26,11 @@ struct DeliveryDetailView: View {
                     headerCard
                     addressCard
                     if hasInstructions { instructionsCard }
+
+                    if let pod = capturedPOD {
+                        PODPreviewView(pod: pod)
+                    }
+
                     captureButton
                 }
                 .padding(DS.Spacing.md)
@@ -43,16 +62,8 @@ struct DeliveryDetailView: View {
             Divider().background(DS.Colors.divider)
 
             HStack(spacing: DS.Spacing.xl) {
-                metricView(
-                    value: "\(delivery.boxCount)",
-                    unit: "boxes",
-                    icon: "shippingbox.fill"
-                )
-                metricView(
-                    value: String(format: "%.1f", delivery.weightKg),
-                    unit: "kg",
-                    icon: "scalemass.fill"
-                )
+                metricView(value: "\(delivery.boxCount)", unit: "boxes", icon: "shippingbox.fill")
+                metricView(value: String(format: "%.1f", delivery.weightKg), unit: "kg", icon: "scalemass.fill")
             }
         }
         .padding(DS.Spacing.md)
@@ -92,13 +103,30 @@ struct DeliveryDetailView: View {
         }
     }
 
+    // Shows the capture CTA for pending deliveries; a greyed confirmation for completed ones.
     private var captureButton: some View {
-        NavigationLink(destination: PODView(delivery: delivery)) {
-            Label("Capture Proof of Delivery", systemImage: "signature")
+        Group {
+            if capturedPOD == nil {
+                NavigationLink(destination: PODView(delivery: delivery)) {
+                    Label("Capture Proof of Delivery", systemImage: "signature")
+                }
+                .buttonStyle(PrimaryButtonStyle())
+                .disabled(delivery.status == "completed")
+                .opacity(delivery.status == "completed" ? 0.4 : 1)
+            } else {
+                HStack {
+                    Image(systemName: "checkmark.seal.fill")
+                        .foregroundColor(DS.Colors.success)
+                    Text("POD already captured for this delivery.")
+                        .font(DS.Typography.caption())
+                        .foregroundColor(DS.Colors.textSecondary)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(DS.Spacing.md)
+                .background(DS.Colors.success.opacity(0.08))
+                .clipShape(RoundedRectangle(cornerRadius: DS.Radius.button))
+            }
         }
-        .buttonStyle(PrimaryButtonStyle())
-        .disabled(delivery.status == "completed")
-        .opacity(delivery.status == "completed" ? 0.4 : 1)
     }
 
     // MARK: - Helpers

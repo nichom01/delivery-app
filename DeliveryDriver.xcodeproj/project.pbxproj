@@ -33,6 +33,7 @@
 		C863F43A494F129A37D8C82A /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DEA035A0D537572D196A2B /* MainTabView.swift */; };
 		D8129B12AD74078EBE0982E7 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A217D2BD5D391EF9E5B49261 /* BarcodeScannerView.swift */; };
 		DA96F0E11BC3AD9E9AFB08C7 /* PODViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E739AD65E808B9843903BF /* PODViewModel.swift */; };
+		DB929FB2E2EEB81E34FC7E8F /* PODPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1924E1A592023379483E811 /* PODPreviewView.swift */; };
 		DC2054838D5722A586C4DA93 /* DeliveryDriver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0EFF0BF138D75EAFCE9296F /* DeliveryDriver.xcdatamodeld */; };
 		E250F645A7EE65DA95B436EF /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5730A4356A624AE354F10C26 /* DesignSystem.swift */; };
 		E657DDE4A540CEAD01E95178 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F780F75CB06DC4A7D32A772F /* AppState.swift */; };
@@ -75,6 +76,7 @@
 		C37403779CD665FBE9664240 /* ManifestModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestModels.swift; sourceTree = "<group>"; };
 		CDC93A142500DE522B218CDC /* StatusBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBadge.swift; sourceTree = "<group>"; };
 		CE8606E8C2AEE73303C5A923 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		D1924E1A592023379483E811 /* PODPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PODPreviewView.swift; sourceTree = "<group>"; };
 		D7F872AEE66AADD08A73DD01 /* DeliveryDriver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DeliveryDriver.xcdatamodel; sourceTree = "<group>"; };
 		E8FCB83B3CDDA157ECF408AE /* SyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncService.swift; sourceTree = "<group>"; };
 		EF57A02534BAA1AF32C73B2F /* AuditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditView.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				ABE117D1EFB171F8B4E8E6B6 /* CameraPickerView.swift */,
+				D1924E1A592023379483E811 /* PODPreviewView.swift */,
 				F709C85BC754296642477FEC /* PODView.swift */,
 				45F3F1B96EE5D83CC55C0DDD /* SignatureCanvasView.swift */,
 			);
@@ -328,6 +331,7 @@
 				E74F99F083F44329493771AD /* ManifestModels.swift in Sources */,
 				1FFD164DB2F48EB1B57FBCD1 /* ManifestView.swift in Sources */,
 				18DC063C6070D6866C126AA2 /* ManifestViewModel.swift in Sources */,
+				DB929FB2E2EEB81E34FC7E8F /* PODPreviewView.swift in Sources */,
 				EF9F12BF87A7B7BFFD8717F6 /* PODView.swift in Sources */,
 				DA96F0E11BC3AD9E9AFB08C7 /* PODViewModel.swift in Sources */,
 				293124C6B577CA619ABB434E /* PersistenceController.swift in Sources */,
