@@ -6,6 +6,33 @@ UI/UX follows a Strava-inspired design language — bold typography, high contra
 
 ---
 
+## Screenshots
+
+<table>
+  <tr>
+    <td align="center"><b>Login</b></td>
+    <td align="center"><b>Manifest</b></td>
+    <td align="center"><b>Delivery Detail</b></td>
+  </tr>
+  <tr>
+    <td><img src="docs/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20-%202026-03-23%20at%2010.01.09.png" width="220"/></td>
+    <td><img src="docs/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20-%202026-03-23%20at%2010.00.49.png" width="220"/></td>
+    <td><img src="docs/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20-%202026-03-23%20at%2010.00.44.png" width="220"/></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Audit</b></td>
+    <td align="center"><b>Settings</b></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><img src="docs/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20-%202026-03-23%20at%2010.00.56.png" width="220"/></td>
+    <td><img src="docs/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20-%202026-03-23%20at%2010.01.02.png" width="220"/></td>
+    <td></td>
+  </tr>
+</table>
+
+---
+
 ## Requirements
 
 | Dependency | Version |
